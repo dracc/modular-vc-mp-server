@@ -66,7 +66,7 @@ function teleport(player, location) {
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower()
   if(cmd == "t") {
-    if (teleport(player, text)) {
+    if (!teleport(player, text)) {
       local message = "";
       foreach(location, position in teleporters) {
         message += " " + location
