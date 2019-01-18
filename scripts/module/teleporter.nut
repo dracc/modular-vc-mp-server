@@ -1,8 +1,8 @@
 teleporters <- {}
 teleporters["bank"] <- Vector( -873.3062, -340.7981, 11.1026 );
-teleporters["hotring"] <- Vector( -1409.717, 1144.97, 266.3857 );
-teleporters["dirtring"] <- Vector( -1331.994, 1454.152, 298.15 );
-teleporters["bloodring"] <- Vector(  -1280.96, 994.86, 261.8 );
+teleporters["hotring"] <- Vector( -1409.717, 1144.97, 266.3857 + 1.0 );
+teleporters["dirtring"] <- Vector( -1331.994, 1454.152, 298.15 + 1.0 );
+teleporters["bloodring"] <- Vector(  -1280.96, 994.86, 261.8 + 1.0 );
 
 
 function lookup_location(location) {
