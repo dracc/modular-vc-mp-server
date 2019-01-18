@@ -28,6 +28,10 @@ function loadPosition(player) {
 
   if (savedloc[i] ) {
     local v = savedv[i]
+
+    // Animation should also help with cancelling out of fall-animation which prevents entering
+	  player.SetAnim(0,29);
+
     if (v) {
       for(local x = 0; x < 5; x++) {
         if (v.Wrecked) {

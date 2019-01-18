@@ -27,7 +27,7 @@ function scripts_load(name) {
 function scripts_handle(name, ...) {
   //print("Handling " + name + " in " + scripts.len() + " script(s)")
 
-  local final_result;
+  local final_result = 1;
 
   // Add a dummy for the `this` pointer
   local a = vargv;

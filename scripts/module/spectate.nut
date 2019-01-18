@@ -15,9 +15,10 @@ function onKeyDown( player, key ) {
           pTargetFind = 0;
         }
 
-      pNewTarget = FindPlayer(pTargetFind++);
-      if(pNewTarget != null && !pNewTarget.Spawned)
-        pNewTarget = null;
+        pNewTarget = FindPlayer(pTargetFind++);
+        if(pNewTarget != null && !pNewTarget.Spawned) {
+          pNewTarget = null;
+        }
       }
 
       if(pNewTarget == null || pNewTarget.ID == pTargetID) {
@@ -93,7 +94,7 @@ function onKeyDown( player, key ) {
 
 
 function onScriptLoad() {
-  BIND_SPEC_TOGGLE      <- BindKey( true, 0x53, 0, 0 );
-  BIND_SPEC_NEXT        <- BindKey( true, 0x27, 0, 0 );
-  BIND_SPEC_PREV        <- BindKey( true, 0x25, 0, 0 );
+  BIND_SPEC_TOGGLE      <- BindKey( true, 0x70, 0, 0 ); // F1
+  BIND_SPEC_NEXT        <- BindKey( true, 0x27, 0, 0 ); // Right
+  BIND_SPEC_PREV        <- BindKey( true, 0x25, 0, 0 ); // Left
 }

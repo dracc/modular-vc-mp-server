@@ -11,6 +11,11 @@ function GetForwardPoint(pos, rad, d) {
   return Vector(x, y, z);
 }
 
+function CVehicle::GetRadiansAngle() {
+  local angle = ::asin( this.Rotation.z ) * -2;
+  return this.Rotation.w < 0 ? 3.14159 - angle : 6.28319 - angle;
+}
+
 function TeleportPlayer(player, pos, angle) {
   local v = player.Vehicle;
   if ( v ) {
@@ -42,13 +47,14 @@ scripts_load("module/vehicle_spawner.nut")
 scripts_load("module/emote.nut")
 scripts_load("module/teleporter.nut")
 scripts_load("module/spectate.nut")
+//scripts_load("module/auto_class.nut") //FIXME: Clashes with spectate
 scripts_load("module/chat.nut")
 scripts_load("module/goto.nut")
 scripts_load("module/stunting.nut")
 scripts_load("module/skin.nut")
+scripts_load("module/color.nut")
 scripts_load("module/ramp.nut")
 scripts_load("module/taxi_stunting.nut")
-scripts_load("module/auto_class.nut")
 scripts_load("module/admin.nut")
 scripts_load("module/debug.nut")
 print("Scripts loaded")
