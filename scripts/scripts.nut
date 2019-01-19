@@ -67,190 +67,189 @@ function scripts_handle(name, ...) {
 
 class Hooks {
 
-  function onServerStart() {
-    scripts_handle("onServerStart");
-  }
+function onServerStart() {
+  scripts_handle("onServerStart");
+}
 
-  function onServerStop() {
-    scripts_handle("onServerStop");
-  }
+function onServerStop() {
+  scripts_handle("onServerStop");
+}
 
-  function onScriptLoad() {
-    scripts_handle("onScriptLoad");
-  }
+function onScriptLoad() {
+  scripts_handle("onScriptLoad");
+}
 
-  function onScriptUnload() {
-    scripts_handle("onScriptUnload");
-  }
+function onScriptUnload() {
+  scripts_handle("onScriptUnload");
+}
 
 // =========================================== P L A Y E R   E V E N T S ==============================================
 
-  function onPlayerJoin( player ) {
-    scripts_handle("onPlayerJoin", player);
-  }
+function onPlayerJoin( player ) {
+  scripts_handle("onPlayerJoin", player);
+}
 
-  function onPlayerPart( player, reason ) {
-    scripts_handle("onPlayerPart", player, reason);
-  }
+function onPlayerPart( player, reason ) {
+  scripts_handle("onPlayerPart", player, reason);
+}
 
-  function onPlayerRequestClass( player, classID, team, skin ) {
-    return scripts_handle("onPlayerRequestClass", player, classID, team, skin);
-  }
+function onPlayerRequestClass( player, classID, team, skin ) {
+  return scripts_handle("onPlayerRequestClass", player, classID, team, skin);
+}
 
-  function onPlayerRequestSpawn( player ) {
-    return scripts_handle("onPlayerRequestSpawn", player);
-  }
+function onPlayerRequestSpawn( player ) {
+  return scripts_handle("onPlayerRequestSpawn", player);
+}
 
-  function onPlayerSpawn( player ) {
-    scripts_handle("onPlayerSpawn", player);
-  }
+function onPlayerSpawn( player ) {
+  scripts_handle("onPlayerSpawn", player);
+}
 
-  function onPlayerDeath( player, reason ) {
-    scripts_handle("onPlayerDeath", player, reason);
-  }
+function onPlayerDeath( player, reason ) {
+  scripts_handle("onPlayerDeath", player, reason);
+}
 
-  function onPlayerKill( player, killer, reason, bodypart ) {
-    scripts_handle("onPlayerKill", player, killer, reason, bodypart);
-  }
+function onPlayerKill( player, killer, reason, bodypart ) {
+  scripts_handle("onPlayerKill", player, killer, reason, bodypart);
+}
 
-  function onPlayerTeamKill( player, killer, reason, bodypart ) {
-    scripts_handle("onPlayerTeamKill", player, killer, reason, bodypart);
-  }
+function onPlayerTeamKill( player, killer, reason, bodypart ) {
+  scripts_handle("onPlayerTeamKill", player, killer, reason, bodypart);
+}
 
-  function onPlayerChat( player, text ) {
-    return scripts_handle("onPlayerChat", player, text);
-  }
+function onPlayerChat( player, text ) {
+  return scripts_handle("onPlayerChat", player, text);
+}
 
-  function onPlayerCommand( player, cmd, text ) {
-    return scripts_handle("onPlayerCommand", player, cmd, text);
-  }
+function onPlayerCommand( player, cmd, text ) {
+  return scripts_handle("onPlayerCommand", player, cmd, text);
+}
 
-  function onPlayerPM( player, playerTo, message ) {
-    return scripts_handle("onPlayerPM", player, playerTo, message);
-  }
+function onPlayerPM( player, playerTo, message ) {
+  return scripts_handle("onPlayerPM", player, playerTo, message);
+}
 
-  function onPlayerBeginTyping( player ) {
-  }
+function onPlayerBeginTyping( player ) {
+}
 
-  function onPlayerEndTyping( player ) {
-  }
+function onPlayerEndTyping( player ) {
+}
 
 /*
-  function onLoginAttempt( player )
-  {
+function onLoginAttempt( player ) {
   return 1;
-  }
+}
 */
 
-  function onNameChangeable( player ) {
-  }
+function onNameChangeable( player ) {
+}
 
-  function onPlayerSpectate( player, target ) {
-  }
+function onPlayerSpectate( player, target ) {
+}
 
-  function onPlayerCrashDump( player, crash ) {
-  }
+function onPlayerCrashDump( player, crash ) {
+}
 
-  function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
-    scripts_handle("onPlayerMove", player, lastX, lastY, lastZ, newX, newY, newZ);
-  }
+function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
+  scripts_handle("onPlayerMove", player, lastX, lastY, lastZ, newX, newY, newZ);
+}
 
-  function onPlayerHealthChange( player, lastHP, newHP ) {
-    scripts_handle("onPlayerHealthChange", player, lastHP, newHP);
-  }
+function onPlayerHealthChange( player, lastHP, newHP ) {
+  scripts_handle("onPlayerHealthChange", player, lastHP, newHP);
+}
 
-  function onPlayerArmourChange( player, lastArmour, newArmour ) {
-  }
+function onPlayerArmourChange( player, lastArmour, newArmour ) {
+}
 
-  function onPlayerWeaponChange( player, oldWep, newWep ) {
-  }
+function onPlayerWeaponChange( player, oldWep, newWep ) {
+}
 
-  function onPlayerAwayChange( player, status ) {
-  }
+function onPlayerAwayChange( player, status ) {
+}
 
-  function onPlayerNameChange( player, oldName, newName ) {
-  }
+function onPlayerNameChange( player, oldName, newName ) {
+}
 
-  function onPlayerActionChange( player, oldAction, newAction ) {
-  }
+function onPlayerActionChange( player, oldAction, newAction ) {
+}
 
-  function onPlayerStateChange( player, oldState, newState ) {
-  }
+function onPlayerStateChange( player, oldState, newState ) {
+}
 
-  function onPlayerOnFireChange( player, IsOnFireNow ) {
-  }
+function onPlayerOnFireChange( player, IsOnFireNow ) {
+}
 
-  function onPlayerCrouchChange( player, IsCrouchingNow ) {
-  }
+function onPlayerCrouchChange( player, IsCrouchingNow ) {
+}
 
-  function onPlayerGameKeysChange( player, oldKeys, newKeys ) {
-    return scripts_handle("onPlayerGameKeysChange", player, oldKeys, newKeys);
-  }
+function onPlayerGameKeysChange( player, oldKeys, newKeys ) {
+  return scripts_handle("onPlayerGameKeysChange", player, oldKeys, newKeys);
+}
 
 // ========================================== V E H I C L E   E V E N T S =============================================
 
-  function onPlayerEnteringVehicle( player, vehicle, door ) {
-    return scripts_handle("onPlayerEnteringVehicle", player, vehicle, door);
-  }
+function onPlayerEnteringVehicle( player, vehicle, door ) {
+  return scripts_handle("onPlayerEnteringVehicle", player, vehicle, door);
+}
 
-  function onPlayerEnterVehicle( player, vehicle, door ) {
-    scripts_handle("onPlayerEnterVehicle", player, vehicle, door);
-  }
+function onPlayerEnterVehicle( player, vehicle, door ) {
+  scripts_handle("onPlayerEnterVehicle", player, vehicle, door);
+}
 
-  function onPlayerExitVehicle( player, vehicle ) {
-    scripts_handle("onPlayerExitVehicle", player, vehicle);
-  }
+function onPlayerExitVehicle( player, vehicle ) {
+  scripts_handle("onPlayerExitVehicle", player, vehicle);
+}
 
-  function onVehicleExplode( vehicle ) {
-    scripts_handle("onVehicleExplode", vehicle);
-  }
+function onVehicleExplode( vehicle ) {
+  scripts_handle("onVehicleExplode", vehicle);
+}
 
-  function onVehicleRespawn( vehicle ) {
-    scripts_handle("onVehicleRespawn", vehicle);
-  }
+function onVehicleRespawn( vehicle ) {
+  scripts_handle("onVehicleRespawn", vehicle);
+}
 
-  function onVehicleHealthChange( vehicle, oldHP, newHP ) {
-    scripts_handle("onVehicleHealthChange", vehicle, oldHP, newHP);
-  }
+function onVehicleHealthChange( vehicle, oldHP, newHP ) {
+  scripts_handle("onVehicleHealthChange", vehicle, oldHP, newHP);
+}
 
-  function onVehicleMove( vehicle, lastX, lastY, lastZ, newX, newY, newZ ) {
-  }
+function onVehicleMove( vehicle, lastX, lastY, lastZ, newX, newY, newZ ) {
+}
 
 // =========================================== P I C K U P   E V E N T S ==============================================
 
-  function onPickupClaimPicked( player, pickup ) {
-    return 1;
-  }
+function onPickupClaimPicked( player, pickup ) {
+  return 1;
+}
 
-  function onPickupPickedUp( player, pickup ) {
-  }
+function onPickupPickedUp( player, pickup ) {
+}
 
-  function onPickupRespawn( pickup ) {
-  }
+function onPickupRespawn( pickup ) {
+}
 
 // ========================================== O B J E C T   E V E N T S ==============================================
 
-  function onObjectShot( object, player, weapon ) {
-  }
+function onObjectShot( object, player, weapon ) {
+}
 
-  function onObjectBump( object, player ) {
-  }
+function onObjectBump( object, player ) {
+}
 
 // =========================================== B I N D   E V E N T S ==============================================
 
-  function onKeyDown( player, key ) {
-    scripts_handle("onKeyDown", player, key);
-  }
+function onKeyDown( player, key ) {
+  scripts_handle("onKeyDown", player, key);
+}
 
-  function onKeyUp( player, key ) {
-    scripts_handle("onKeyUp", player, key);
-  }
+function onKeyUp( player, key ) {
+  scripts_handle("onKeyUp", player, key);
+}
 
 // Forgotten stuff
 
-  function onCheckpointEntered( player, checkpoint ) {
-    scripts_handle("onCheckpointEntered", player, checkpoint);
-  }
+function onCheckpointEntered( player, checkpoint ) {
+  scripts_handle("onCheckpointEntered", player, checkpoint);
+}
 }
 
 
