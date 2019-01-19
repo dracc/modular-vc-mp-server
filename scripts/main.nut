@@ -19,24 +19,25 @@ function CVehicle::GetRadiansAngle() {
 function TeleportPlayer(player, pos, angle) {
   local v = player.Vehicle;
   if ( v ) {
-    v.Pos = pos
+    v.Pos = pos;
     //FIXME: Handle quaternions
-    angle = Vector(0,0,angle)
+    angle = Vector(0,0,angle);
 
-      v.EulerAngle = angle
-    //} else {
-      //v.Angle = angle
+    v.EulerAngle = angle;
     //}
-    v.Speed = Vector(0,0,0)
+    //else {
+    //v.Angle = angle
+    //}
+    v.Speed = Vector(0,0,0);
   } else {
-    player.Pos = pos
+    player.Pos = pos;
   }
 }
 
 function random( min = 0, max = RAND_MAX ) {
-    local r = rand();
-    srand( GetTickCount() * r );
-    return ( r % ( ( max + 1 ) - min ) ) + min;
+  local r = rand();
+  srand( GetTickCount() * r );
+  return ( r % ( ( max + 1 ) - min ) ) + min;
 }
 
 dofile("./scripts/scripts.nut")
@@ -56,6 +57,5 @@ scripts_load("module/color.nut")
 scripts_load("module/ramp.nut")
 scripts_load("module/taxi_stunting.nut")
 scripts_load("module/admin.nut")
-scripts_load("module/debug.nut")
+//scripts_load("module/debug.nut")
 print("Scripts loaded")
-
