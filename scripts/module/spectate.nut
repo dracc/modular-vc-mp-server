@@ -22,7 +22,8 @@ function onKeyDown( player, key ) {
       }
 
       if(pNewTarget == null || pNewTarget.ID == pTargetID) {
-        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one else can be spectated.", player, 0, 0, 0 );
+        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one else can be spectated.",
+		       player, 0, 0, 0 );
       } else {
         player.SpectateTarget = pNewTarget;
         local szMsg = "Spectating " + pNewTarget.Name + " (" + pNewTarget.ID + ")";
@@ -50,13 +51,13 @@ function onKeyDown( player, key ) {
       }
 
       if(pNewTarget == null || pNewTarget.ID == pTargetID) {
-        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one else can be spectated.", player, 0, 0, 0 );
+        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one else can be spectated.",
+		       player, 0, 0, 0 );
       } else {
         player.SpectateTarget = pNewTarget;
         local szMsg = "spectating " + pNewTarget.Name + " (" + pNewTarget.ID + ")";
         MessagePlayer( szMsg, player );
       }
-
     }
     return;
   }
@@ -79,14 +80,14 @@ function onKeyDown( player, key ) {
       }
 
       if(pNewTarget == null) {
-        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one can be spectated at this time.", player, 0, 0, 0 );
+        ClientMessage( "[#ed4242]Error: [#e9e9e9]No one can be spectated at this time.",
+		       player, 0, 0, 0 );
       } else {
         player.SpectateTarget = pNewTarget;
         local szMsg = "Spectating " + pNewTarget.Name + " (" + pNewTarget.ID + ")";
         MessagePlayer( szMsg, player );
       }
     }
-
     return;
   }
 
