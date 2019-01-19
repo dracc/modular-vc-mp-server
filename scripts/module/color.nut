@@ -5,12 +5,16 @@ function onPlayerCommand( player, cmd, text ) {
   switch ( cmd ) {
   //FIXME: Group these 2
   case "color": {
-      local v = player.Vehicle;
-      if ( !v ) MessagePlayer( "[#ff0000]You're not in any vehicle." ,player );
-      else if ( !text && !IsNum( text ) ) MessagePlayer( "[#ff0000]Usage: /color <Colour1ID>" ,player );
-      else v.Colour1 = text.tointeger();
-      //FIXME: Support colour 2
-      break;
+    local v = player.Vehicle;
+    if ( !v ) {
+      MessagePlayer( "[#ff0000]You're not in any vehicle." ,player );
+    } else if ( !text && !IsNum( text ) ) {
+      MessagePlayer( "[#ff0000]Usage: /color <Colour1ID>" ,player );
+    } else {
+      v.Colour1 = text.tointeger();
+    }
+    //FIXME: Support colour 2
+    break;
   }
   default:
     break;
