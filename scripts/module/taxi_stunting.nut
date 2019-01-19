@@ -7,16 +7,16 @@ height_cp_timer <- array( 100, null);
 
 
 function resetRecord() {
-  height_record <- null
-  height_record_holder <- null  
-  height_record_vehicle <- null  
-  height_record_position <- null 
+  height_record <- null;
+  height_record_holder <- null;
+  height_record_vehicle <- null;
+  height_record_position <- null;
 }
 
 function onScriptLoad() {
 
-  height_record_checkpoint <- null
-  resetRecord()
+  height_record_checkpoint <- null;
+  resetRecord();
 
   SetTaxiBoostJump( true );
 }
@@ -28,8 +28,8 @@ function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
     return;
   }
 
-  local v = player.Vehicle
-  
+  local v = player.Vehicle;
+
   if (!v) {
     return;
   }
@@ -40,9 +40,9 @@ function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
   }
 
   // You must be this much higher
-  local threshold = 0.0
+  local threshold = 0.0;
 
-  local height = v.Pos.z
+  local height = v.Pos.z;
   if (!height_record || height > (height_record + threshold)) {
     height_record = height;
     height_record_holder = player.Name;
@@ -50,52 +50,56 @@ function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
     height_record_position = v.Pos;
 
     //FIXME: Be more picky about when we print this / wait until the attempt is over
-    local message = player.Name + " just broke the height record! New record is " + height_record
-    MessagePlayer(message, player)
+    local message = player.Name + " just broke the height record! " +
+      "New record is " + height_record;
+    MessagePlayer(message, player);
   }
 }
 
 function createVisual(player, duration) {
-  removeVisual(player.ID)
-  height_cp[player.ID] = CreateCheckpoint(player, player.UniqueWorld, false, height_record_position, ARGB(255, 255, 0, 0), 4);
-  height_ma[player.ID] = CreateMarker(player.UniqueWorld, height_record_position, 5, RGB(255, 255, 0), 26 );  
+  removeVisual(player.ID);
+  height_cp[player.ID] = CreateCheckpoint(player, player.UniqueWorld, false,
+					  height_record_position, ARGB(255, 255, 0, 0), 4);
+  height_ma[player.ID] = CreateMarker(player.UniqueWorld, height_record_position,
+				      5, RGB(255, 255, 0), 26 );
 
-  height_cp_timer[player.ID] = NewTimer("removeVisual", duration, 1, player.ID)
+  height_cp_timer[player.ID] = NewTimer("removeVisual", duration, 1, player.ID);
 }
 
 function removeVisual(ID) {
   if (height_cp_timer[ID] != null) {
-    height_cp_timer[ID].Delete()
-    height_cp_timer[ID] = null
+    height_cp_timer[ID].Delete();
+    height_cp_timer[ID] = null;
   }
   if (height_cp[ID] != null) {
     height_cp[ID].Remove();
-    height_cp[ID] = null
+    height_cp[ID] = null;
   }
   if (height_ma[ID] != null) {
     DestroyMarker(height_ma[ID]);
-    height_ma[ID] = null
+    height_ma[ID] = null;
   }
 }
 
 function onPlayerCommand( player, cmd, text ) {
-  cmd = cmd.tolower()
+  cmd = cmd.tolower();
   if (cmd == "height") {
     local message;
     if (height_record) {
-      message = "Height record was " + height_record + " by " + height_record_holder + " in " + GetVehicleNameFromModel(height_record_vehicle);
-      createVisual(player, 10000)
+      message = "Height record was " + height_record + " by " +
+	height_record_holder + " in " + GetVehicleNameFromModel(height_record_vehicle);
+      createVisual(player, 10000);
 
     } else {
       message = "There is no height record yet";
     }
-    MessagePlayer(message, player)
+    MessagePlayer(message, player);
   }
 
   if (player.Admin) {
     if (cmd == "reset_height") {
       resetRecord();
-      Message("Height record was reset")
+      Message("Height record was reset");
     }
   }
 }
