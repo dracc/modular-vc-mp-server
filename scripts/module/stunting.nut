@@ -5,13 +5,14 @@ function onScriptLoad() {
   BIND_LOAD_POS <- BindKey(true,0x08,0,0); // backspace
   BIND_SAVE_POS <- BindKey(true,0x2E,0,0); // delete
   BIND_FLIP <- BindKey(true,0x23,0,0); // end
-  
+
+  //FIXME: This should be a class, and probably a table;
+  //       possibly extend the player class
   savedv <- array( 100, null );
+  savedvs <- array( 100, null );
   savedslot <- array( 100, null );
   savedloc <- array( 100, null );
   savedang <- array( 100, null );
-
-
 
   SetDrivebyEnabled( false );
   SetTaxiBoostJump( true );
@@ -27,26 +28,50 @@ function loadPosition(player) {
   local angle
 
   if (savedloc[i] ) {
-    local v = savedv[i]
 
-    // Animation should also help with cancelling out of fall-animation which prevents entering
-	  player.SetAnim(0,29);
+    // Attempt to increase stability
+    for(local x = 0; x < 5; x++) {
 
-    if (v) {
-      for(local x = 0; x < 5; x++) {
+      // Animation should help with cancelling out of fall-animation which
+      // prevents entering vehicles
+      if (!player.Vehicle) {
+	      player.SetAnim(0, 3);
+      }
+
+      local v = savedv[i];
+      local vs = savedvs[i];
+      if (v) {
         if (v.Wrecked) {
           v.Fix() //FIXME: Also restore health?
         }
-        v.Pos = savedloc[ i ];
-        v.Angle = savedang[ i ];
-        v.Speed = Vector(0,0,0);
-        v.TurnSpeed = Vector(0,0,0);
-        player.Vehicle = v
+        if (vs == 0) {
+          v.Pos = savedloc[i];
+          v.Angle = savedang[i];
+          v.Speed = Vector(0, 0, 0);
+          v.TurnSpeed = Vector(0, 0, 0);
+        }
+        //print("Putting " + player + " in " + v + " slot " + vs)
+
+        // Only move player if necessary (messes with animation system):
+        // - There's nobody where the player should be
+        // - There's another player where the player should be
+        local occupant = v.GetOccupant(vs)
+        if ((!occupant) || (occupant.ID != player.ID)) {
+          //print("Was " + player + " in " + player.Vehicle + " slot " + player.VehicleSlot)
+          if (vs == 0) {
+            player.Vehicle = v;
+          } else {
+            player.Pos = v.Pos;
+            player.PutInVehicleSlot(v, vs);
+          }
+        }
+
+        angle = v.GetRadiansAngle()
+      } else {
+        player.Pos = savedloc[ i ];
+        angle = player.Angle
       }
-      angle = v.GetRadiansAngle()
-    } else {
-      player.Pos = savedloc[ i ];
-      angle = player.Angle
+
     }
 
   } else {
@@ -70,12 +95,15 @@ function onKeyDown( player, key ) {
   if ( key == BIND_SAVE_POS ) {
     savedloc[ i ] = player.Pos;
     local v = player.Vehicle;
-    if (v && player.VehicleSlot == 0) {
+    local vs = player.VehicleSlot;
+    if (v) {
       savedang[i] = v.Angle;
-      savedv[i] = v
+      savedv[i] = v;
+      savedvs[i] = vs;
     } else {
       savedang[i] = null; //FIXME: store an angle
-      savedv[i] = null
+      savedv[i] = null;
+      savedvs[i] = null;
     }
     MessagePlayer( "[#ff0000] Position saved." ,player );
     PlaySoundForPlayer(player, 375);
