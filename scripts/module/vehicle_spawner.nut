@@ -1,18 +1,18 @@
 function deletePlayerVehicles( player ) {
-    for( local i=0; i < owner.len(); i++ ) {
-      if ( owner[ i ] == player.Name ) {
-        local v = FindVehicle( i );
-        if ( v ) v.Delete();
-        owner[ i ] = null;
-      }
+  for( local i=0; i < owner.len(); i++ ) {
+    if ( owner[ i ] == player.Name ) {
+      local v = FindVehicle( i );
+      if ( v ) v.Delete();
+      owner[ i ] = null;
     }
-    owner[ player.ID ] = null;
+  }
+  owner[ player.ID ] = null;
 
-    CVehTime[ player.ID ] = 0;
+  CVehTime[ player.ID ] = 0;
 }
 
 function spawnVehicle(player, model) {
-  local text = model
+  local text = model;
 
   if (!player.IsSpawned) {
     MessagePlayer( "[#ff0000]Failed, need to spawn first." ,player );
@@ -25,14 +25,15 @@ function spawnVehicle(player, model) {
   }
 
   if ( CVehTime[ player.ID ] > 9 ) {
-    MessagePlayer( "[#ff0000]Failed, you have created too many vehicles, use /delveh to delete them." ,player );
+    MessagePlayer( "[#ff0000]Failed, you have created too many vehicles, use" +
+		   "/delveh to delete them." ,player );
     return 0; 
   }
 
   // Get model number
   local model;
   if (IsNum( text )) {
-    model = text.tointeger()    
+    model = text.tointeger();
   } else {
     model = GetVehicleModelFromName(text);
   }
@@ -46,15 +47,15 @@ function spawnVehicle(player, model) {
   // FIXME: Use proper position
   local pos;
   local angle;
-  local v = player.Vehicle
+  local v = player.Vehicle;
   if (v) {
-    angle = v.GetRadiansAngle()
+    angle = v.GetRadiansAngle();
     pos =  GetForwardPoint(v.Pos, angle, 6.0);
-    pos.z += 1.0
+    pos.z += 1.0;
   } else {
-    angle = player.Angle
+    angle = player.Angle;
     pos = GetForwardPoint(player.Pos, angle, 4.0);
-    pos.z += 1.0
+    pos.z += 1.0;
   }
 
   // Spawn
@@ -63,7 +64,7 @@ function spawnVehicle(player, model) {
   local v = CreateVehicle( model, pos, angle, col1, col2);
 
   if (!player.Vehicle) {
-    player.Vehicle = v
+    player.Vehicle = v;
   }
 
   // Add to player inventory
@@ -77,19 +78,19 @@ function spawnVehicle(player, model) {
 }
 
 function onPlayerCommand( player, cmd, text ) {
-  cmd = cmd.tolower()
+  cmd = cmd.tolower();
   if(cmd == "v") {
-    spawnVehicle(player, text)
+    spawnVehicle(player, text);
   } else if (cmd == "delete") {
-    deletePlayerVehicles(player)
+    deletePlayerVehicles(player);
   }
-  return 1
+  return 1;
 }
 
 function onScriptLoad() {
   //FIXME: Grow these manually..
   owner <- array( 500, null );
-  CVehTime <- array( 100, 0 );
+  CVehTime <- array( GetMaxPlayers(), 0 );
 }
 
 function onPlayerPart( player, reason ) {
@@ -100,7 +101,8 @@ function onPlayerEnteringVehicle( player, vehicle, door ) {
   vehicle.Immunity = 0xFF;
   local own = owner[ vehicle.ID ];
   if ( own ) {
-    MessagePlayer( "[#FF00FF]You've entered " + own + "'s vehicle. (ID" + vehicle.ID + ")", player );
+    MessagePlayer( "[#FF00FF]You've entered " + own + "'s vehicle. (ID" +
+		   vehicle.ID + ")", player );
   }
   return 1;
 }
