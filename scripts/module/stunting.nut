@@ -25,7 +25,7 @@ function onScriptLoad() {
 function loadPosition(player) {
   local i = player.ID;
 
-  local angle
+  local angle;
 
   if (savedloc[i] ) {
 
@@ -35,14 +35,14 @@ function loadPosition(player) {
       // Animation should help with cancelling out of fall-animation which
       // prevents entering vehicles
       if (!player.Vehicle) {
-	      player.SetAnim(0, 3);
+        player.SetAnim(0, 3);
       }
 
       local v = savedv[i];
       local vs = savedvs[i];
       if (v) {
         if (v.Wrecked) {
-          v.Fix() //FIXME: Also restore health?
+          v.Fix(); //FIXME: Also restore health?
         }
         if (vs == 0) {
           v.Pos = savedloc[i];
@@ -55,7 +55,7 @@ function loadPosition(player) {
         // Only move player if necessary (messes with animation system):
         // - There's nobody where the player should be
         // - There's another player where the player should be
-        local occupant = v.GetOccupant(vs)
+        local occupant = v.GetOccupant(vs);
         if ((!occupant) || (occupant.ID != player.ID)) {
           //print("Was " + player + " in " + player.Vehicle + " slot " + player.VehicleSlot)
           if (vs == 0) {
@@ -65,25 +65,20 @@ function loadPosition(player) {
             player.PutInVehicleSlot(v, vs);
           }
         }
-
-        angle = v.GetRadiansAngle()
+        angle = v.GetRadiansAngle();
       } else {
         player.Pos = savedloc[ i ];
-        angle = player.Angle
+        angle = player.Angle;
       }
-
     }
-
   } else {
-    angle = 0.0
+    angle = 0.0;
   }
 
-  return angle
+  return angle;
 }
 
-
 function onKeyDown( player, key ) {
-
   if(!player.Spawned) {
     return;
   }
@@ -110,7 +105,7 @@ function onKeyDown( player, key ) {
   }
 
   if ( key == BIND_LOAD_POS ) {
-    local angle = loadPosition(player)
+    local angle = loadPosition(player);
 
     // Attempt to warp camera
     //local pos = Vector(savedloc[i].x, savedloc[i].y, savedloc[i].z + 1.0)
@@ -119,13 +114,12 @@ function onKeyDown( player, key ) {
 
   if ( key == BIND_FLIP ) {
     if ( player.VehicleSlot == 0 ) {
-        local rot = player.Vehicle.Rotation;
-        rot.x = rot.y = 0;
+      local rot = player.Vehicle.Rotation;
+      rot.x = rot.y = 0;
     } else {
       MessagePlayer( "[#ff0000][Error] - You are not in any vehicle." ,player );
     }
   }
-
 }
 
 function onKeyUp( player, key ) {
@@ -135,7 +129,7 @@ function onKeyUp( player, key ) {
   }
 
   if ( key == BIND_LOAD_POS ) {
-    loadPosition(player)
+    loadPosition(player);
 
     // Finish camera warp
     // player.RestoreCamera()
@@ -158,7 +152,7 @@ function onPlayerSpawn( player ) {
 }
 
 function onPlayerHealthChange( player, lastHP, newHP ) {
-  player.Health = 100.0
+  player.Health = 100.0;
 }
 
 function onVehicleHealthChange( vehicle, oldHP, newHP ) {
@@ -169,7 +163,7 @@ function onVehicleHealthChange( vehicle, oldHP, newHP ) {
   }
 
   //FIXME: Why? What is this?
-  local id = vehicle.Model;
-  //if ( id == 190 || id == 136 || id == 160 || id == 176 || id == 183 || id == 184 || id == 202 || id == 203 || id == 214 ) {
+  //local id = vehicle.Model;
+  //if (GetVehicleType(id) == "Boat"){
   //}
 }
