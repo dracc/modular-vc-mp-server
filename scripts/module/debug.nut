@@ -4,15 +4,15 @@ function onScriptLoad() {
 
 function onPlayerCommand( player, cmd, text ) {
   if (cmd.tolower() == "r") {
-    print("Reloading all scripts")
-    Message("Reloading all scripts")
+    print("Reloading all scripts");
+    Message("Reloading all scripts");
 
-    collectgarbage()
+    collectgarbage();
     ReloadScripts();
   }
 
   if (cmd.tolower() == "pos") {
-    print(player.Pos)
+    print(player.Pos);
   }
 }
 
