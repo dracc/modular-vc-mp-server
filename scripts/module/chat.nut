@@ -1,4 +1,4 @@
 function onPlayerChat( player, text ) {
-	print(player.Name + ": " + text);
-	return 1;
+  print(player.Name + ": " + text);
+  return 1;
 }
