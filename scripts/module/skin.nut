@@ -3,13 +3,12 @@
 skins <- array( 100, null);
 
 function onPlayerCommand( player, cmd, text ) {
-  cmd = cmd.tolower()
+  cmd = cmd.tolower();
   if(cmd == "skin") {
-
     if (!text) {
       return;
     }
-
+    
     local id;
     if (IsNum(text)) {
       id = text.tointeger();
@@ -17,18 +16,17 @@ function onPlayerCommand( player, cmd, text ) {
       //FIXME: Search skin id by name
       return;
     }
-
-    player.Skin = id
-    skins[player.ID] = id
+    player.Skin = id;
+    skins[player.ID] = id;
   }
 }
 
 function onPlayerSpawn( player ) {
   if (skins[player.ID] != null) {
-    player.Skin = skins[player.ID]
+    player.Skin = skins[player.ID];
   }
 }
 
 function onPlayerPart( player, reason ) {
-  skins[player.ID] = null
+  skins[player.ID] = null;
 }
