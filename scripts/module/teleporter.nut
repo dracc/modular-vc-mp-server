@@ -12,19 +12,13 @@ teleporters["jy"] <- Vector( -1718.5946, -280.8699, 14.8683 );
 teleporters["dyy"] <- Vector( 7.0703, 964.4935, 10.4632 );
 teleporters["y"] <- Vector( 557.677, -886.057, 432.612 );
 
-function lookup_location(location) {
-  local result = false;
-  local location = location.tolower();
-
-  if (location in teleporters) {
-    return teleporters[location];
-  }
-
-  return result;
-}
-
 function teleport(player, location) {
-  local pos = lookup_location(location);
+  local location = location.tolower();
+  local pos = false;
+  
+  if (location in teleporters) {
+    pos = teleporters[location];
+  }
   if (pos == false) {
     return false;
   }
