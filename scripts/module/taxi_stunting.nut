@@ -61,7 +61,7 @@ function createVisual(player, duration) {
   height_cp[player.ID] = CreateCheckpoint(player, player.UniqueWorld, false,
 					  height_record_position, ARGB(255, 255, 0, 0), 4);
   height_ma[player.ID] = CreateMarker(player.UniqueWorld, height_record_position,
-				      5, RGB(255, 255, 0), 26 );
+				      5, RGB(255, 0, 0), 0 );
 
   height_cp_timer[player.ID] = NewTimer("removeVisual", duration, 1, player.ID);
 }
