@@ -13,29 +13,28 @@ teleporters <- {
   "y": Vector( 557.677, -886.057, 432.612 ) };
 
 function teleport(player, location) {
-  local location = location.tolower();
-  local pos = false;
-  
+  location = location.tolower();
   if (location in teleporters) {
-    pos = teleporters[location];
+    TeleportPlayer(player, teleporters[location], 0);
+    return true;
   }
-  if (pos == false) {
-    return false;
-  }
-  TeleportPlayer(player, pos, 0);
-  return true;
+  return false;
 }
 
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
   if(cmd == "t") {
-    if (!teleport(player, text)) {
-      local message = "";
-      foreach(location, position in teleporters) {
-        message += " " + location;
+    if(text) {
+      if (!teleport(player, text)) {
+	local message = "";
+	foreach(location, position in teleporters) {
+	  message += " " + location;
+	}
+	MessagePlayer("[#ff0000][Error] - Bad location. Try" + message, player);
       }
-      MessagePlayer("[#ff0000][Error] - Bad location. Try" + message, player);
+    } else {
+      MessagePlayer("Usage: /" + cmd + " <string>", player);
     }
   }
   return 1;
