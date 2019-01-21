@@ -42,7 +42,7 @@ function onPlayerCommand( player, cmd, text ) {
       local v = FindVehicle( i );
       if ( v ) {
         v.Delete();
-	owner[ i ] = null;
+        owner[ i ] = null;
       }
     }
     Message( "[#ff0000]Admin " + player.Name + " deleted all vehicles!");
@@ -84,14 +84,15 @@ function onPlayerCommand( player, cmd, text ) {
       local plr = FindPlayer( id );
       if ( plr ) {
         local reason = GetTok( text, " ", 2 NumTok( text, " " ) );
-        MessagePlayer( "wth...." + reason, player );
+        local msg = "[#FF0000]Admin " + player.Name + " kicked " + plr.Name;
         if ( reason ) {
-          Message( "[#FF0000]Admin " + player.Name + " kicked " + plr.Name + " for reason: " + reason );
-          KickPlayer( plr );
+          msg += " for reason: " + reason;
         }
+        Message( msg );  
+        KickPlayer( plr );
       }
     } else {
-      MessagePlayer( "Usage: /kick <player> <reason>", player );
+      MessagePlayer( "Usage: /kick <player> [reason]", player );
     }
     break;
   }
