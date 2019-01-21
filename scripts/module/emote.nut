@@ -75,7 +75,8 @@ function onPlayerCommand(player, cmd, text) {
   cmd = cmd.tolower();
   if (cmd == "e") {
     if(text in emotes) {
-      player.SetAnim(emotes[text]);
+      local emote = emotes[text];
+      player.SetAnim(emote[0], emote[1]);
       return;
     }
     
