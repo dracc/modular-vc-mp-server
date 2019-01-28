@@ -13,6 +13,6 @@ function onPlayerCommand( player, cmd, text ) {
     }
     //FIXME: Support colour 2
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/color", player);
+    MessagePlayer("[#8080A0]/color", player);
   }
 }

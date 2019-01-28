@@ -84,7 +84,7 @@ function onPlayerCommand( player, cmd, text ) {
   } else if (cmd == "delete") {
     deletePlayerVehicles(player);
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/v[ehicle] /delete", player);
+    MessagePlayer("[#8080A0]/v[ehicle] /delete", player);
   }
   return 1;
 }
