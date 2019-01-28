@@ -4,7 +4,7 @@ function onScriptLoad() {
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  if (cmd == "r") {
+  if (cmd == "r" || cmd == "reload") {
     print("Reloading all scripts");
     Message("Reloading all scripts");
 
@@ -13,7 +13,7 @@ function onPlayerCommand( player, cmd, text ) {
   } else if (cmd == "pos") {
     print(player.Pos);
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/r /pos", player);
+    MessagePlayer("[#333380]/r[eload] /pos", player);
   }
 }
 
