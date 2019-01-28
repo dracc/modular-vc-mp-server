@@ -2,9 +2,7 @@
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  switch ( cmd ) {
-  //FIXME: Group these 2
-  case "color": {
+  if (cmd == "color") {
     local v = player.Vehicle;
     if ( !v ) {
       MessagePlayer( "[#ff0000]You're not in any vehicle." ,player );
@@ -14,12 +12,7 @@ function onPlayerCommand( player, cmd, text ) {
       v.Colour1 = text.tointeger();
     }
     //FIXME: Support colour 2
-    break;
-  }
-  case "help":
+  } else if (cmd == "help") {
     MessagePlayer("[#333380]/color", player);
-    break;
-  default:
-    break;
   }
 }

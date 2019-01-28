@@ -42,8 +42,7 @@ function onKeyDown(player, id) {
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  switch ( cmd ) {
-  case "hyper":
+  if ( cmd == "hyper") {
     if ( hyper[player.ID] ) {
       MessagePlayer( "[#00ff00]Hyper key removed." ,player );
       hyper[player.ID] = false;
@@ -53,11 +52,7 @@ function onPlayerCommand( player, cmd, text ) {
 		     "\nI - Fly ahead, K - Fly back\nQ - Fly over, E - Fly down" +
 		     "\nJ - Fly to your left, L - Fly to your right" ,player );
     }
-    break;
-  case "help":
+  } else if (cmd == "help") {
     MessagePlayer("[#333380]/hyper", player);
-    break;
-  default:
-    break;
   }
 }

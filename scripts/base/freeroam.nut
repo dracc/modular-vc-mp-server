@@ -30,14 +30,9 @@ function onPlayerJoin( player ) {
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  switch ( cmd ) {
-  case "rules":
+  if (cmd == "rules") {
     Message( "No disturbing other's play. Kids only." );
-    break;
-  case "help":
-    MessagePlayer("[#333380]/help", player);
-    break;
-  default:
-    break;
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/rules /help", player);
   }
 }

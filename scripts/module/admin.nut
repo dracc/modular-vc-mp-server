@@ -23,17 +23,12 @@ function GetTok(string, separator, n, ...) {
 
 function onPlayerCommand( player, cmd, text ) {
 
-  local lcmd = cmd.tolower();
+  cmd = cmd.tolower();
 
-  switch ( lcmd ) {
-  //FIXME: Top security brah
-  case "secret":
+  if (cmd == "secret") {
     player.Admin = 1;
-    PrivMessage( player, "/delplayerveh /delallveh /settime /setf3" +
-                 "/setweather /explode /ann /get /goto /kick" );
-    break;
-  default:
-    break;
+    PrivMessage( player, "/delplayerveh /delallveh /time /setf3" +
+                 " /weather /explode /ann /get /kick" );
   }
 
 /*
@@ -54,9 +49,7 @@ function onPlayerCommand( player, cmd, text ) {
     return;
   }
 
-  switch ( lcmd ) {
-
-  case "time":
+  if (cmd == "time") {
     if ( text && IsNum( text ) ) {
       local w = GetWeather();
       SetTime( text.tointeger(), 0 );
@@ -64,19 +57,14 @@ function onPlayerCommand( player, cmd, text ) {
     } else {
       MessagePlayer( "Usage: /" + lcmd + " <int>", player );
     }
-    break;
-
-  case "weather": {
+  } else if (cmd == "weather") {
     if ( text && IsNum( text ) ) {
       SetWeather( text.tointeger() );
       AdminMessage( player.Name + " set weather id to " + text.tointeger() );
     } else {
       MessagePlayer( "Usage: /" + lcmd + " <int>", player );
     }
-    break;
-  }
-
-  case "kick": {
+  } else if (cmd == "kick") {
     if ( text  ) {
       local id = GetTok( text, " ", 1 );
       if (IsNum( id )) {
@@ -95,15 +83,8 @@ function onPlayerCommand( player, cmd, text ) {
     } else {
       MessagePlayer( "Usage: /kick <player> [reason]", player );
     }
-    break;
-  }
-
-  case "help":
+  } else if (cmd == "help") {
     MessagePlayer("[#338080]/time /weather /kick", player);
-    break;
-
-  default:
-    break;
   }
 }
 
