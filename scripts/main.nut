@@ -48,6 +48,7 @@ scripts_load("module/vehicle_spawner.nut")
 scripts_load("module/emote.nut")
 scripts_load("module/teleporter.nut")
 scripts_load("module/spectate.nut")
+scripts_load("module/stadium.nut")
 //scripts_load("module/auto_class.nut") //FIXME: Clashes with spectate
 scripts_load("module/chat.nut")
 scripts_load("module/goto.nut")
