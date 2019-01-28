@@ -84,7 +84,7 @@ function onPlayerCommand( player, cmd, text ) {
       MessagePlayer( "Usage: /kick <player> [reason]", player );
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#338080]/time /weather /kick", player);
+    MessagePlayer("[#80A0A0]/time /weather /kick", player);
   }
 }
 

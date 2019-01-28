@@ -95,7 +95,7 @@ function onPlayerCommand( player, cmd, text ) {
     }
     MessagePlayer(message, player);
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/height", player);
+    MessagePlayer("[#8080A0]/height", player);
   }
 
   if (player.Admin) {
@@ -103,7 +103,7 @@ function onPlayerCommand( player, cmd, text ) {
       resetRecord();
       Message("Height record was reset");
     } else if (cmd == "help") {
-      MessagePlayer("[#338080]/reset_height", player);
+      MessagePlayer("[#80A0A0]/reset_height", player);
     }
   }
 }

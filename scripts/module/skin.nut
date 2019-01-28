@@ -19,7 +19,7 @@ function onPlayerCommand( player, cmd, text ) {
     player.Skin = id;
     skins[player.ID] = id;
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/skin", player);
+    MessagePlayer("[#8080A0]/skin", player);
   }
 }
 

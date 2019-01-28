@@ -87,6 +87,6 @@ function onPlayerCommand(player, cmd, text) {
     MessagePlayer(message, player);
     return;
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/e[mote]", player);
+    MessagePlayer("[#8080A0]/e[mote]", player);
   }
 }

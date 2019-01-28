@@ -14,7 +14,7 @@ function onPlayerCommand( player, cmd, text ) {
       }
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/g[oto]", player);
+    MessagePlayer("[#8080A0]/g[oto]", player);
   }
   return 1;
 }

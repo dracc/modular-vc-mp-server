@@ -33,6 +33,6 @@ function onPlayerCommand( player, cmd, text ) {
   if (cmd == "rules") {
     Message( "No disturbing other's play. Kids only." );
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/rules /help", player);
+    MessagePlayer("[#8080A0]/rules /help", player);
   }
 }

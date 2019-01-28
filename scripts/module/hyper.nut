@@ -53,6 +53,6 @@ function onPlayerCommand( player, cmd, text ) {
 		     "\nJ - Fly to your left, L - Fly to your right" ,player );
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/hyper", player);
+    MessagePlayer("[#8080A0]/hyper", player);
   }
 }

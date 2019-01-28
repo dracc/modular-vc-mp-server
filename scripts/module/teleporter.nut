@@ -37,7 +37,7 @@ function onPlayerCommand( player, cmd, text ) {
       MessagePlayer("Usage: /" + cmd + " <string>", player);
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/t[eleport]", player);
+    MessagePlayer("[#8080A0]/t[eleport]", player);
   }
   return 1;
 }

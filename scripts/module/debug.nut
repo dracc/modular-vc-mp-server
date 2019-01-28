@@ -13,7 +13,7 @@ function onPlayerCommand( player, cmd, text ) {
   } else if (cmd == "pos") {
     print(player.Pos);
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/r[eload] /pos", player);
+    MessagePlayer("[#8080A0]/r[eload] /pos", player);
   }
 }
 
