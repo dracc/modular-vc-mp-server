@@ -26,7 +26,7 @@ function spawnVehicle(player, model) {
 
   if ( CVehTime[ player.ID ] > 9 ) {
     MessagePlayer( "[#ff0000]Failed, you have created too many vehicles, use" +
-		   "/delveh to delete them." ,player );
+		   " /delete to delete them.", player );
     return 0; 
   }
 
@@ -79,12 +79,12 @@ function spawnVehicle(player, model) {
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  if(cmd == "v") {
+  if(cmd == "v" || cmd == "vehicle") {
     spawnVehicle(player, text);
   } else if (cmd == "delete") {
     deletePlayerVehicles(player);
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/v /delete", player);
+    MessagePlayer("[#333380]/v[ehicle] /delete", player);
   }
   return 1;
 }

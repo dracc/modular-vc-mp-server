@@ -73,20 +73,20 @@ function onPlayerCommand(player, cmd, text) {
     return;
   }
   cmd = cmd.tolower();
-  if (cmd == "e") {
+  if (cmd == "e" || cmd == "emote") {
     if(text in emotes) {
       local emote = emotes[text];
       player.SetAnim(emote[0], emote[1]);
       return;
     }
     
-    local message = "[#6666FF]Anims' list: [#FFFF81](/e) ";
+    local message = "[#6666FF]Anims' list: [#FFFF81](/" + cmd +") ";
     foreach(anim, index in emotes) {
       message += anim + ", ";
     }
     MessagePlayer(message, player);
     return;
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/e", player);
+    MessagePlayer("[#333380]/e[mote]", player);
   }
 }

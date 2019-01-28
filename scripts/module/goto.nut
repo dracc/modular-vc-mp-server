@@ -1,8 +1,8 @@
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  if(cmd == "g") {
+  if(cmd == "g" || cmd == "goto") {
     if(!text) {
-      MessagePlayer( "Error - Correct syntax - /goto <Name/ID>' !",player );
+      MessagePlayer( "Error - Incorrect syntax - /" + cmd +  "<Name/ID>' !",player );
     } else {
       local plr = FindPlayer(text);
       if(!plr) {
@@ -14,7 +14,7 @@ function onPlayerCommand( player, cmd, text ) {
       }
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/g", player);
+    MessagePlayer("[#333380]/g[oto]", player);
   }
   return 1;
 }

@@ -24,7 +24,7 @@ function GetTok(string, separator, n, ...) {
 function onPlayerCommand( player, cmd, text ) {
 
   cmd = cmd.tolower();
-
+  //FIXME: Top security brah
   if (cmd == "secret") {
     player.Admin = 1;
     PrivMessage( player, "/delplayerveh /delallveh /time /setf3" +
