@@ -24,7 +24,7 @@ function teleport(player, location) {
 
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
-  if(cmd == "t") {
+  if(cmd == "t" || cmd == "teleport") {
     if(text) {
       if (!teleport(player, text)) {
 	local message = "";
@@ -37,7 +37,7 @@ function onPlayerCommand( player, cmd, text ) {
       MessagePlayer("Usage: /" + cmd + " <string>", player);
     }
   } else if (cmd == "help") {
-    MessagePlayer("[#333380]/t", player);
+    MessagePlayer("[#333380]/t[eleport]", player);
   }
   return 1;
 }

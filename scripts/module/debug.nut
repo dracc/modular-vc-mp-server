@@ -3,15 +3,16 @@ function onScriptLoad() {
 }
 
 function onPlayerCommand( player, cmd, text ) {
-  if (cmd.tolower() == "r") {
+  cmd = cmd.tolower();
+  if (cmd == "r") {
     print("Reloading all scripts");
     Message("Reloading all scripts");
 
     collectgarbage();
     ReloadScripts();
-  } else if (cmd.tolower() == "pos") {
+  } else if (cmd == "pos") {
     print(player.Pos);
-  } else if (cmd.tolower() == "help") {
+  } else if (cmd == "help") {
     MessagePlayer("[#333380]/r /pos", player);
   }
 }
