@@ -21,11 +21,18 @@ function teleport(player, location) {
   return false;
 }
 
-
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
   if(cmd == "t" || cmd == "teleport") {
     if(text) {
+
+      local coords = split(text, " ");
+      if (coords.len == 3 && player.Admin) {
+        local pos = Vector(coords[0].tofloat(), coords[1].tofloat(), coords[2].tofloat());
+        TeleportPlayer(player, pos, 0);
+        return 1;
+      }
+
       if (!teleport(player, text)) {
 	local message = "";
 	foreach(location, position in teleporters) {
@@ -33,8 +40,13 @@ function onPlayerCommand( player, cmd, text ) {
 	}
 	MessagePlayer("[#ff0000][Error] - Bad location. Try" + message, player);
       }
+
     } else {
-      MessagePlayer("Usage: /" + cmd + " <string>", player);
+      local helpmsg = "Usage: /" + cmd + " <string>";
+      if (player.Admin) {
+        helpmsg += "[#80A0A0], /" + cmd + " <X> <Y> <Z>";
+      }
+      MessagePlayer(helpmsg, player);
     }
   } else if (cmd == "help") {
     MessagePlayer("[#8080A0]/t[eleport]", player);
