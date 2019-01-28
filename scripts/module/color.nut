@@ -16,6 +16,9 @@ function onPlayerCommand( player, cmd, text ) {
     //FIXME: Support colour 2
     break;
   }
+  case "help":
+    MessagePlayer("[#333380]/color", player);
+    break;
   default:
     break;
   }

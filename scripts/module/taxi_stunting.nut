@@ -94,12 +94,16 @@ function onPlayerCommand( player, cmd, text ) {
       message = "There is no height record yet";
     }
     MessagePlayer(message, player);
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/height", player);
   }
 
   if (player.Admin) {
     if (cmd == "reset_height") {
       resetRecord();
       Message("Height record was reset");
+    } else if (cmd == "help") {
+      MessagePlayer("[#338080]/reset_height", player);
     }
   }
 }

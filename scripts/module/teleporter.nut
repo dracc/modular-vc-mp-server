@@ -36,6 +36,8 @@ function onPlayerCommand( player, cmd, text ) {
     } else {
       MessagePlayer("Usage: /" + cmd + " <string>", player);
     }
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/t", player);
   }
   return 1;
 }

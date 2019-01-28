@@ -83,6 +83,8 @@ function onPlayerCommand( player, cmd, text ) {
     spawnVehicle(player, text);
   } else if (cmd == "delete") {
     deletePlayerVehicles(player);
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/v /delete", player);
   }
   return 1;
 }

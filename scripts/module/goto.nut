@@ -13,6 +13,8 @@ function onPlayerCommand( player, cmd, text ) {
 	MessagePlayer( "[ /" + cmd + " ] " + player.Name + " was sent to " + plr.Name, player );
       }
     }
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/g", player);
   }
   return 1;
 }
