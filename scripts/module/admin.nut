@@ -65,6 +65,7 @@ function onPlayerCommand( player, cmd, text ) {
       MessagePlayer( "Usage: /" + lcmd + " <int>", player );
     }
     break;
+
   case "weather": {
     if ( text && IsNum( text ) ) {
       SetWeather( text.tointeger() );
@@ -96,6 +97,10 @@ function onPlayerCommand( player, cmd, text ) {
     }
     break;
   }
+
+  case "help":
+    MessagePlayer("[#338080]/time /weather /kick", player);
+    break;
 
   default:
     break;

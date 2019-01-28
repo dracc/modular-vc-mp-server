@@ -9,10 +9,10 @@ function onPlayerCommand( player, cmd, text ) {
 
     collectgarbage();
     ReloadScripts();
-  }
-
-  if (cmd.tolower() == "pos") {
+  } else if (cmd.tolower() == "pos") {
     print(player.Pos);
+  } else if (cmd.tolower() == "help") {
+    MessagePlayer("[#333380]/r /pos", player);
   }
 }
 

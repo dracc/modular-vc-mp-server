@@ -86,5 +86,7 @@ function onPlayerCommand(player, cmd, text) {
     }
     MessagePlayer(message, player);
     return;
+  } else if (cmd == "help") {
+    MessagePlayer("[#333380]/e", player);
   }
 }

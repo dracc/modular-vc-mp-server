@@ -54,6 +54,9 @@ function onPlayerCommand( player, cmd, text ) {
 		     "\nJ - Fly to your left, L - Fly to your right" ,player );
     }
     break;
+  case "help":
+    MessagePlayer("[#333380]/hyper", player);
+    break;
   default:
     break;
   }

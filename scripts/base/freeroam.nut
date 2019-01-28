@@ -31,12 +31,13 @@ function onPlayerJoin( player ) {
 function onPlayerCommand( player, cmd, text ) {
   cmd = cmd.tolower();
   switch ( cmd ) {
-    case "rules": {
-      Message( "No disturbing other's play. Kids only." );
-      break;
-    }
-    default: {
-      break;
-    }
+  case "rules":
+    Message( "No disturbing other's play. Kids only." );
+    break;
+  case "help":
+    MessagePlayer("[#333380]/help", player);
+    break;
+  default:
+    break;
   }
 }
