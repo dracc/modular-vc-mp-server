@@ -1,8 +1,8 @@
 function onKeyDown( player, key ) {
 
-  if(player.Spawned) {
-    return;
-  }
+//  if(player.Spawned) {
+//    return;
+//  }
 
   if ( key == BIND_SPEC_NEXT ) {
     if( player.SpectateTarget != null) {
