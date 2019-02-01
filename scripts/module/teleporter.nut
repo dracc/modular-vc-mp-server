@@ -27,7 +27,7 @@ function onPlayerCommand( player, cmd, text ) {
     if(text) {
 
       local coords = split(text, " ");
-      if (coords.len == 3 && player.Admin) {
+      if (coords.len() == 3 && player.Admin) {
         local pos = Vector(coords[0].tofloat(), coords[1].tofloat(), coords[2].tofloat());
         TeleportPlayer(player, pos, 0);
         return 1;
