@@ -218,7 +218,7 @@ function onVehicleMove( vehicle, lastX, lastY, lastZ, newX, newY, newZ ) {
 // =========================================== P I C K U P   E V E N T S ==============================================
 
 function onPickupClaimPicked( player, pickup ) {
-  return 1;
+  return scripts_handle("onPickupClaimPicked", player, pickup);
 }
 
 function onPickupPickedUp( player, pickup ) {
