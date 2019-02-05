@@ -19,18 +19,19 @@ function onPlayerHealthChange( player, lastHP, newHP ) {
   if ( newHP < 0.1 && alive[player.ID]) {
     alive[player.ID] = false;
     local pos = player.Pos;
-    local xOffset = 0;
-    local zOffset = 0;
+    local x;
+    local y;
+    local alpha;
+    local radius = 1.0;
     local pickup = null;
     for (local i = 0; i <= 8; ++i) {
       if ( player.GetWeaponAtSlot(i) ) {
+        alpha = (i / 8.0 * 2.0 * PI) + player.Angle;
+        x = pos.x + sin(alpha) * radius;
+        y = pos.y + cos(alpha) * radius;
         pickup = CreatePickup(weaponModelIDs[ player.GetWeaponAtSlot(i) ],
                               player.World, player.GetAmmoAtSlot(i),
-                              pos.x+xOffset, pos.y, pos.z+zOffset, 255, true);
-        ++zOffset;
-        if (!(zOffset %= 2)) {
-          ++xOffset;
-        }
+                              x, y, pos.z, 255, true);
         if ( pickup ) {
           droppedWeapons.rawset( pickup.ID, pickup);
         }
