@@ -1,21 +1,27 @@
 //
 
+skinIDs <- [  9, 10, 11, 15, 16,
+             26, 30, 31, 32, 33,
+             34, 42, 44, 45, 50,
+             71, 72, 139 ];
+
+function createClasses() {
+  local team = 0;
+  foreach (id in skinIDs) {
+    AddClass(team++, RGB(100,149,237), id, Vector(460, 1150, 35), 0,
+             (team % 6) + 3, 1, 21, 20, 23, 90);
+  }
+}
+
 function onScriptLoad() {
-
   SetGameModeName("Mall Madness");
-
-  AddClass(1, RGB(100,149,237), 64, Vector(-421.729, -485.533, 11.0655), 0,
-           6,1, 19,20, 23,90);
-  AddClass(2, RGB(100,149,237), 65, Vector(-421.729, -485.533, 11.0655), 0,
-           3,1, 19,20, 24,90);
-  AddClass(3, RGB(100,149,237), 66, Vector(-421.729, -485.533, 11.0655), 0,
-           8,1, 20,15, 23,90);
-  AddClass(4, RGB(100,149,237), 37, Vector(-421.729, -485.533, 11.0655), 0,
-           9,1, 19,20, 22,90);
-
+  createClasses();
   SetVehiclesForcedRespawnHeight( 10000 );
-
   SetFrameLimiter(true);
+
+  SetSpawnPlayerPos(460, 1150, 35);
+  SetSpawnCameraPos(460, 1155, 38);
+  SetSpawnCameraLook(460, 1150, 35);
 }
 
 function onPlayerJoin( player ) {
