@@ -11,5 +11,7 @@ spawns <- [Vector(459.92, 1005.26, 19.1811),
 
 function onPlayerSpawn( player ) {
   local pos = spawns[rand() % spawns.len()];
-  TeleportPlayer(player, pos, 0);
+  local offsetY = ((rand() % 40) - 20) / 10;
+  local offsetX = ((rand() % 40) - 20) / 10;
+  TeleportPlayer(player, Vector(pos.x+offsetX, pos.y+offsetY, pos.z), 0);
 }
