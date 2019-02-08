@@ -30,7 +30,7 @@ function onPlayerMove( player, lastX, lastY, lastZ, newX, newY, newZ ) {
 
   local v = player.Vehicle;
 
-  if (!v) {
+  if (!v || player.VehicleSlot != 0) {
     return;
   }
 
