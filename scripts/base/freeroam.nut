@@ -19,8 +19,8 @@ function onScriptLoad() {
   SetTaxiBoostJump( true );
   SetJumpSwitch( false );
   SetStuntBike( false );
-
-  SetFrameLimiter(true);
+  SetHeliBladeDamageDisabled( true );
+  SetFrameLimiter( true );
 }
 
 function onPlayerJoin( player ) {
