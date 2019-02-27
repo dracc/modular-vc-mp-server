@@ -250,6 +250,12 @@ function onKeyUp( player, key ) {
 function onCheckpointEntered( player, checkpoint ) {
   scripts_handle("onCheckpointEntered", player, checkpoint);
 }
+
+// ========================================== S O C K E T   E V E N T S ============================================
+
+function onClientScriptData( player ) {
+  scripts_handle("onClientScriptData", player);
+}
 }
 
 
