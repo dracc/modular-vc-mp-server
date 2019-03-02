@@ -16,7 +16,12 @@ keys <- {
 };
 
 function onScriptLoad() {
-  binds <- {};
+  db <- ConnectSQL("scripts/keybinds.db");
+  if (!db) {
+    print("ERROR: SQLite database file could not be opened");
+  }
+  QuerySQL(db, "CREATE TABLE IF NOT EXISTS keybinds(name TEXT, key INTEGER, " +
+           "cmd TEXT, PRIMARY KEY(name,key));");
   local i;
   for(i = 0; i < 10; ++i) {
     keys[format("%i", i)] <- 0x30 + i;
@@ -47,11 +52,15 @@ function onPlayerCommand( player, cmd, text ) {
   if (cmd == "bind") {
     if (!text) {
       local currbinds = "Current binds: \n";
-      if (player.Name in binds) {
-        foreach (key, bind in binds[player.Name]) {
-          currbinds += "'" + key + "'" + ": '" + bind + "'\n";
-        }
+      local q = QuerySQL(db, "SELECT key, cmd FROM keybinds WHERE name = '" +
+                         player.Name + "';");
+      if (q) {
+        do {
+          currbinds += "'" + GetSQLColumnData(q, 0) + "': '" +
+            GetSQLColumnData(q, 1) + "'\n";
+        } while (GetSQLNextRow(q));
       }
+      FreeSQLQuery(q);
       MessagePlayer(currbinds + "Usage:\n" +
                     "Bind key: /" + cmd + " <key> <command>\n" +
                     "Unbind:   /" + cmd + " <key>\n" +
@@ -59,7 +68,6 @@ function onPlayerCommand( player, cmd, text ) {
       return;
     }
     text = text.tolower();
-    local bindTable = {};
     local argArray = partition(text, " ");
     local key = argArray[0];
     if (key in keys) {
@@ -70,26 +78,29 @@ function onPlayerCommand( player, cmd, text ) {
       MessagePlayer("Invalid key!", player);
       return;
     }
-    if (player.Name in binds) {
-      bindTable = binds[player.Name];
-    }
     if (argArray[1] && argArray[1] != "") {
-      bindTable[key] <- argArray[1];
+      QuerySQL(db, "REPLACE INTO keybinds(name, key, cmd) VALUES ('" +
+        player.Name + "'," + key + ",'" + argArray[1]+ "');");
       sendKeyData(player, key, argArray[1]);
     } else {
-      bindTable.rawdelete(key);
+      QuerySQL(db, "DELETE FROM keybinds WHERE name = '" + player.Name +
+               "' AND key = " + key + ";");
       sendKeyData(player, key, "null");
     }
-    binds[player.Name] <- bindTable;
   } else if (cmd == "help") {
     MessagePlayer("[#8080A0]/bind", player);
   }
 }
 
-function onPlayerPart( player, reason ) {
-  if (player.Name in binds) {
-    binds.rawdelete(player.Name);
+function onPlayerJoin( player ) {
+  local q = QuerySQL(db, "SELECT key, cmd FROM keybinds WHERE name = '" +
+                     player.Name + "'");
+  if (q) {
+    do {
+      sendKeyData(player, GetSQLColumnData(q, 0), GetSQLColumnData(q, 1));
+    } while (GetSQLNextRow(q));
   }
+  FreeSQLQuery(q);
 }
 
 function onClientScriptData( player ) {
