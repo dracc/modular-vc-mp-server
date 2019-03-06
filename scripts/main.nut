@@ -43,6 +43,7 @@ function random( min = 0, max = RAND_MAX ) {
 dofile("./scripts/scripts.nut")
 
 scripts_load("base/freeroam.nut")
+scripts_load("module/keybinder.nut")
 scripts_load("module/escalator_fix.nut")
 scripts_load("module/interiors.nut")
 scripts_load("module/vehicle_spawner.nut")
